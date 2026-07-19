@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="Fast, responsive grading calculator supporting multiple institutions"
+    />
+    <meta name="theme-color" content="#0b59a8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Academic Grading Calculator</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body>
+    <div class="container-wrapper">
+      <header class="app-header">
+        <div class="header-content">
+          <h1>📊 Grading Calculator</h1>
+          <p class="subtitle">Fast & Responsive</p>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="input-section" id="inputs">
+          <h2>Add Courses</h2>
+
+          <div class="institution-selector">
+            <label for="institution">Institution:</label>
+            <select id="institution">
+              <option value="uni-a">University A</option>
+              <option value="uni-b">University B</option>
+            </select>
+          </div>
+
+          <form id="calc-form">
+            <div id="courses-container"></div>
+
+            <div class="button-group">
+              <button type="button" id="add-course" class="btn btn-secondary">
+                + Add Course
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Calculate GPA
+              </button>
+              <button type="button" id="clear-all" class="btn btn-tertiary">
+                Clear All
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="results-section" id="results">
+          <h2>Results</h2>
+          <div class="results-grid">
+            <div class="result-card">
+              <span class="result-label">GPA</span>
+              <span class="result-value" id="gpa">-</span>
+            </div>
+            <div class="result-card">
+              <span class="result-label">Total Credits</span>
+              <span class="result-value" id="total-credits">-</span>
+            </div>
+            <div class="result-card">
+              <span class="result-label">Status</span>
+              <span class="result-value" id="status">-</span>
+            </div>
+          </div>
+          <div id="result-message" class="result-message"></div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>
+          &copy; 2024 Grading Calculator. Works offline and scales to millions
+          of users.@ charles dev. All rights reserved.
+        </p>
+      </footer>
+    </div>
+
+    <script src="/app.js" defer></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .catch((err) => console.log("SW registration failed"));
+      }
+    </script>
+  </body>
+</html>

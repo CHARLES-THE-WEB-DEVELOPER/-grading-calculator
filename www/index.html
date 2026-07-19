@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="KNUST GPA & CWA Calculator. Offline-ready calculator for KNUST grading scale with local save and export."
+    />
+    <meta name="theme-color" content="#102a43" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="KNUST GPA CWA" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='42' fill='%23157fff'/><path d='M56 62h80v16H56zM56 96h80v16H56zM56 130h48v16H56zM128 114l22-18 10 12-32 26-20-16 10-11 10 7z' fill='%23fff'/><circle cx='96' cy='96' r='50' fill='rgba(255,255,255,0.08)'/></svg>"
+    />
+    <link
+      rel="mask-icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='42' fill='%23157fff'/></svg>"
+      color="#15539e"
+    />
+    <title>KNUST GPA & CWA Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <div class="container-wrapper">
+      <div id="splash-screen" class="splash-screen">
+        <div class="splash-card">
+          <span class="pill">Offline-first Academic Tool</span>
+          <h1>KNUST GPA & CWA Calculator</h1>
+          <p>
+            Professional academic planning for KNUST students: instant GPA, CWA,
+            classification, and local save/export in one elegant app.
+          </p>
+          <div class="splash-features">
+            <div class="feature-pill">Offline-ready after first load</div>
+            <div class="feature-pill">KNUST grading scale built in</div>
+            <div class="feature-pill">History and CSV export</div>
+          </div>
+          <button id="start-btn" class="btn btn-primary">
+            Launch Calculator
+          </button>
+        </div>
+      </div>
+
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark">🎓</span>
+          <div>
+            <h1>KNUST GPA & CWA Calculator</h1>
+            <p class="subtitle">
+              Offline-ready calculator built specifically for KNUST grading
+              policy with 70+ as A.
+            </p>
+          </div>
+        </div>
+        <div class="hero-grid">
+          <div class="hero-card">
+            <strong>1</strong>
+            <span>Only KNUST</span>
+          </div>
+          <div class="hero-card">
+            <strong>70+</strong>
+            <span>A grade threshold</span>
+          </div>
+          <div class="hero-card">
+            <strong>Trusted</strong>
+            <span>KNUST-specific accuracy</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="panel panel-light">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Academic planning</p>
+              <h2>Course entry</h2>
+            </div>
+          </div>
+
+          <div class="status-line">
+            <span id="network-status" class="status-pill status-online"
+              >Online</span
+            >
+            <span class="status-copy"
+              >Offline-ready, no network required for saved calculations.</span
+            >
+          </div>
+
+          <form id="calc-form" class="course-form">
+            <div id="courses-container" class="courses-container"></div>
+
+            <div class="button-group">
+              <button type="button" id="add-course" class="btn btn-secondary">
+                + Add Course
+              </button>
+              <button type="submit" class="btn btn-primary">Calculate</button>
+              <button type="button" id="clear-all" class="btn btn-tertiary">
+                Clear All
+              </button>
+            </div>
+          </form>
+
+          <div class="action-bar">
+            <button type="button" id="save-result" class="btn btn-outline">
+              Save Result
+            </button>
+            <button type="button" id="export-history" class="btn btn-outline">
+              Export CSV
+            </button>
+            <button type="button" id="download-pdf" class="btn btn-secondary">
+              Download PDF
+            </button>
+          </div>
+        </section>
+
+        <section class="panel panel-glass">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Performance insights</p>
+              <h2>GPA & CWA summary</h2>
+            </div>
+          </div>
+
+          <div class="summary-grid">
+            <article class="summary-card">
+              <span>GPA</span>
+              <strong id="gpa-value">0.00</strong>
+            </article>
+            <article class="summary-card">
+              <span>CWA</span>
+              <strong id="cwa-value">0.00</strong>
+            </article>
+            <article class="summary-card">
+              <span>Total Credits</span>
+              <strong id="credits-value">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Classification</span>
+              <strong id="classification-value">-</strong>
+            </article>
+            <article class="summary-card">
+              <span>Status</span>
+              <strong id="status-value">-</strong>
+            </article>
+          </div>
+
+          <div id="result-message" class="result-message">
+            Add courses and press Calculate to begin.
+          </div>
+
+          <div class="info-grid">
+            <article class="legend-card">
+              <div class="card-header">
+                <h3>Grade legend</h3>
+                <p>KNUST grading scale.</p>
+              </div>
+              <div id="grade-legend" class="legend-grid"></div>
+            </article>
+
+            <article class="breakdown-card">
+              <div class="card-header">
+                <h3>Instant breakdown</h3>
+                <p>Compare course GP and points.</p>
+              </div>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Course</th>
+                      <th>Score</th>
+                      <th>Credits</th>
+                      <th>Grade</th>
+                      <th>GP</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody id="breakdown-body">
+                    <tr>
+                      <td colspan="6">Add courses to see the breakdown.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+
+          <div class="history-panel">
+            <div class="history-header">
+              <div>
+                <p class="eyebrow">History</p>
+                <h3>Saved calculations</h3>
+              </div>
+              <button type="button" id="clear-history" class="btn btn-tertiary">
+                Clear History
+              </button>
+            </div>
+            <div id="history-list" class="history-list"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>
+          KNUST calculator • Offline-capable • Designed for student success.
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .catch((err) => console.warn("SW registration failed", err));
+      }
+    </script>
+  </body>
+</html>

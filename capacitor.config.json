@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.gradingcalculator",
+  "appName": "grading-calculator",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

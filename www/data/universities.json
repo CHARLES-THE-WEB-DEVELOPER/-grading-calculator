@@ -1,0 +1,15 @@
+[
+  {
+    "id": "knust",
+    "name": "KNUST (Kwame Nkrumah University of Science & Technology)",
+    "description": "KNUST grading scale using 70+ as A, with a trusted West African standard.",
+    "gradingScale": [
+      { "min": 70, "max": 100, "grade": "A", "gp": 4.0, "class": "First Class" },
+      { "min": 60, "max": 69, "grade": "B", "gp": 3.0, "class": "Second Class (Upper)" },
+      { "min": 50, "max": 59, "grade": "C", "gp": 2.0, "class": "Second Class (Lower)" },
+      { "min": 45, "max": 49, "grade": "D", "gp": 1.0, "class": "Pass" },
+      { "min": 40, "max": 44, "grade": "E", "gp": 0.7, "class": "Pass" },
+      { "min": 0, "max": 39, "grade": "F", "gp": 0.0, "class": "Fail" }
+    ]
+  }
+]
